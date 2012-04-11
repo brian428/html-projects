@@ -9,12 +9,10 @@ Ext.define('ADV.view.AnimatedDataViewPanel', {
         width:650,
         layout:'fit',
 
-        // TODO: implement DeftJS injection here, override "store".
-        /*
         mixins: [ 'Deft.mixin.Injectable' ],
         inject: {
            store: 'animatedDataViewStore'
-        },*/
+        },
 
         // Create child components.
         initComponent:function () {
@@ -50,9 +48,7 @@ Ext.define('ADV.view.AnimatedDataViewPanel', {
             // Create the main data view.
             var dataview = Ext.create('Ext.view.View', {
                 deferInitialRefresh:false,
-                // TODO: Add when DeftJS injection is implemented. Injection should override "store".
-                //store:this.store,
-                store:'AnimatedDataViewStore',
+                store: this.store,
                 tpl:Ext.create('Ext.XTemplate',
                     '<tpl for=".">',
                     '<div class="phone">',

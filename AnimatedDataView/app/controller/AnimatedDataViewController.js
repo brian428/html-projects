@@ -8,17 +8,11 @@ Ext.define('ADV.controller.AnimatedDataViewController',
             'AnimatedDataViewPanel'
         ],
 
-        // Setup the stores and models so they can be referenced and loaded into the views.
-        stores:[
-            'AnimatedDataViewStore'
-        ],
-
-        // TODO: implement DeftJS injection here, override "store". Remove above declaration of stores.
-        /*
-         mixins: [ 'Deft.mixin.Injectable' ],
-         inject: {
-         store: 'animatedDataViewStore'
-         },*/
+        // Mark the Controller as Injectable and specify dependencies for injection.
+        mixins: [ 'Deft.mixin.Injectable' ],
+        inject: {
+            store: 'animatedDataViewStore'
+        },
 
         models:[
             'AnimatedDataViewModel'
@@ -45,14 +39,10 @@ Ext.define('ADV.controller.AnimatedDataViewController',
         filterData:function (slider) {
             var values = slider.getValues();
 
-            // TODO: Removed when DeftJS injection is implemented. Injection should override "store".
-            // This is what happens when you don't follow the naming convention.
-            var store = this.getAnimatedDataViewStoreStore();
-
-            store.suspendEvents();
-            store.clearFilter();
-            store.resumeEvents();
-            store.filter([
+            this.store.suspendEvents();
+            this.store.clearFilter();
+            this.store.resumeEvents();
+            this.store.filter([
                 {
                     fn:function (record) {
                         return record.get('price') >= values[0] && record.get('price') <= values[1];
@@ -60,7 +50,7 @@ Ext.define('ADV.controller.AnimatedDataViewController',
                 }
             ]);
 
-            store.sort('name', 'ASC');
+            this.store.sort('name', 'ASC');
             console.log('Slider Values: ' + values[0] + " " + values[1]);
         }
 
