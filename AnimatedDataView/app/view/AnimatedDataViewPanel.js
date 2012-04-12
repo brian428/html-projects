@@ -9,10 +9,8 @@ Ext.define('ADV.view.AnimatedDataViewPanel', {
         width:650,
         layout:'fit',
 
-        // TODO: Include Controllable mixin and specify the controller.
-        //mixins: [ 'Deft.mixin.Injectable', 'Deft.mixin.Controllable' ],
-        //controller: 'ADV.controller.AnimatedDataViewController',
-        mixins: [ 'Deft.mixin.Injectable' ],
+        mixins: [ 'Deft.mixin.Injectable', 'Deft.mixin.Controllable' ],
+        controller: 'ADV.controller.AnimatedDataViewController',
         inject: {
            store: 'animatedDataViewStore'
         },
@@ -33,7 +31,7 @@ Ext.define('ADV.view.AnimatedDataViewPanel', {
 
             // Phone slider.
             var phoneSlider = Ext.create('Ext.slider.Multi', {
-                id:'phonSlider',
+                id:'phoneSlider',
                 hideLabel:true,
                 width:300,
                 minValue:0,
