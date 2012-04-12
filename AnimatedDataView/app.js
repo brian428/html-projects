@@ -10,6 +10,7 @@ Ext.application({
     setConfig:({enabled:true}),
     layout:'fit',
 
+    // TODO: Remove when DeftJS controller is implemented.
     // Load the controllers.
     controllers:[
         'AnimatedDataViewController'

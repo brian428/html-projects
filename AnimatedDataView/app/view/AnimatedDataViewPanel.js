@@ -3,12 +3,15 @@ Ext.define('ADV.view.AnimatedDataViewPanel', {
         extend:'Ext.panel.Panel',
         alias:'widget.animatedDataViewPanel',
         setConfig:{enabled:true},
-        title:'Animated DataView MVC',
+        title:'Animated DataView MVC DeftJS',
         autoShow:true,
         height:555,
         width:650,
         layout:'fit',
 
+        // TODO: Include Controllable mixin and specify the controller.
+        //mixins: [ 'Deft.mixin.Injectable', 'Deft.mixin.Controllable' ],
+        //controller: 'ADV.controller.AnimatedDataViewController',
         mixins: [ 'Deft.mixin.Injectable' ],
         inject: {
            store: 'animatedDataViewStore'

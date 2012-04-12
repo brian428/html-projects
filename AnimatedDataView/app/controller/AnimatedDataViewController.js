@@ -2,17 +2,31 @@ Ext.define('ADV.controller.AnimatedDataViewController',
     {
         // Extend the Controller class to handle events for the views.
         extend:'Ext.app.Controller',
+        // TODO: Extend DeftJS ViewController instead.
+        //extend: 'Deft.mvc.ViewController',
+
+        // Mark the Controller as Injectable and specify dependencies for injection.
+        mixins:[ 'Deft.mixin.Injectable' ],
+        inject:{
+            store:'animatedDataViewStore'
+        },
+
+        // TODO: Trying to set up the component reference and listener.  Doesn't want to compile though, syntax issue perhaps?.
+        /*
+         // Use the control annotation to configure a reference to the component using a
+         // view-relative component query selector and also add the event listener.
+         control: {
+            phoneSlider:
+                selector: 'animatedDataViewPanel #phonSlider'
+                // TODO: how to specify the buffer argument? See line 46.
+                listeners: 'change': 'filterData'
+         },
+         */
 
         // Setup the views.
         views:[
             'AnimatedDataViewPanel'
         ],
-
-        // Mark the Controller as Injectable and specify dependencies for injection.
-        mixins: [ 'Deft.mixin.Injectable' ],
-        inject: {
-            store: 'animatedDataViewStore'
-        },
 
         models:[
             'AnimatedDataViewModel'
@@ -21,6 +35,8 @@ Ext.define('ADV.controller.AnimatedDataViewController',
         // Setup listeners here using the control function. References to view components are
         // retrieved using the ComponentQuery engine.
         init:function () {
+
+            // TODO: Remove when DeftJS controller is implemented.
             this.control(
                 {
                     // Query the phone slider by id in the AnimatedViewPanel ':
@@ -33,6 +49,8 @@ Ext.define('ADV.controller.AnimatedDataViewController',
                     }
 
                 });
+
+            return this.callParent(arguments);
         },
 
         // Handler function(s)
