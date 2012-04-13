@@ -1,28 +1,19 @@
+Ext.Loader.setConfig({
+    enabled: true,
+    paths: {
+        'Ext': 'ext-4.0/src',
+        'ADV': 'app'
+    }
+});
+
+Ext.require('ADV.view.Viewport');
+
 Ext.onReady(function () {
     Deft.Injector.configure({
         animatedDataViewStore: 'ADV.store.AnimatedDataViewStore'
     });
-});
 
-Ext.application({
-    name:'ADV',
-    appFolder:'app',
-    setConfig:({enabled:true}),
-    layout:'fit',
-
-    // TODO: Remove when DeftJS controller is implemented.
-    // Load the controllers.
-    controllers:[
-        'AnimatedDataViewController'
-    ],
-
-    launch:function () {
-        Ext.create('Ext.container.Viewport', {
-            items:[
-                {
-                    xtype:'animatedDataViewPanel'
-                }
-            ]
-        });
-    }
+    Ext.create('ADV.view.Viewport', {
+        renderTo: 'body'
+    });
 });
