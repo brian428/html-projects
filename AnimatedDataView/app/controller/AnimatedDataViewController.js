@@ -13,15 +13,11 @@ Ext.define('ADV.controller.AnimatedDataViewController',
         // view-relative component query selector and also add the event listener.
         control:{
             phoneSlider: {
-                /*
-                TODO: Upcoming Deft JS revision will add support for this:
-                change: {
-                    buffer: 70,
-                    fn: this.filterData
-                }
-                */
                 listeners: {
-                    change:'filterData'
+                    change: {
+                        fn: 'filterData',
+                        buffer: 70
+                    }
                 }
             }
         },
