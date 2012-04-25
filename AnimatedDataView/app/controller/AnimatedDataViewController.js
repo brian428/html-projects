@@ -12,19 +12,27 @@ Ext.define('ADV.controller.AnimatedDataViewController',
         // Use the control annotation to configure a reference to the component using a
         // view-relative component query selector and also add the event listener.
         control:{
+
+            loadDataButton: {
+                listeners: {
+                    click: 'onLoadData'
+                }
+            },
+
             phoneSlider: {
                 listeners: {
                     change: {
                         fn: 'filterData',
-                        buffer: 70
+                        buffer: 300
                     }
                 }
             }
         },
 
         // Handler function(s)
-        filterData:function (slider) {
-            var values = slider.getValues();
+        filterData:function () {
+
+            var values = this.getPhoneSlider().getValues();
 
             this.store.suspendEvents();
             this.store.clearFilter();
@@ -39,6 +47,14 @@ Ext.define('ADV.controller.AnimatedDataViewController',
 
             this.store.sort('name', 'ASC');
             console.log('Slider Values: ' + values[0] + " " + values[1]);
-        }
+        },
 
+        onLoadData:function () {
+            this.store.load({
+                scope : this,
+                callback: function(records, operation, success) {
+                    this.filterData();
+                }
+            });
+        }
     });

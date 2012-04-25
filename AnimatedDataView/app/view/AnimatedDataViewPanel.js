@@ -29,6 +29,12 @@ Ext.define('ADV.view.AnimatedDataViewPanel', {
                 margins:'0 5 0 5'
             });
 
+            // Load data button.
+            var loadDataButton = Ext.create('Ext.Button', {
+                id: 'loadDataButton',
+                text: 'Load Data'
+            });
+
             // Phone slider.
             var phoneSlider = Ext.create('Ext.slider.Multi', {
                 id:'phoneSlider',
@@ -39,10 +45,11 @@ Ext.define('ADV.view.AnimatedDataViewPanel', {
                 values:[80, 320]
             });
 
+
             //  Add label and slider to a tab bar.
             var tabBar = Ext.create('Ext.tab.Bar', {
                 layout:'fit',
-                items:[tabBarLabel, phoneSlider]
+                items:[tabBarLabel, phoneSlider, loadDataButton]
 
             });
 

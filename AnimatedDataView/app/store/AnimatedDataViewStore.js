@@ -1,12 +1,35 @@
 Ext.define('ADV.store.AnimatedDataViewStore', {
     extend:'Ext.data.ArrayStore',
+    // Uncomment when using data proxy.
+    //extend:'Ext.data.Store',
+    model:'ADV.model.AnimatedDataViewModel',
     sortInfo: {
         field    : 'name',
         direction: 'ASC'
     },
-    model:'ADV.model.AnimatedDataViewModel',
+    autoLoad: true,
+    // Comment out proxy and uncomment data back if not using
+    /*
+    proxy: {
+        type: 'jsonp',
+        url: 'http://localhost:8080/ExtJS/FileDownload',
+        reader: {
+            root: 'data'
+        },
+
+        listeners: {
+            exception: function(proxy, response, options) {
+                console.log("Exception AnimatedDataViewStore...");
+            }
+        },
+
+        afterRequest: function(operation, success) {
+            console.log("AnimatedDataViewStore Data Loaded..." + success);
+        }
+    }/*/
+
     data:[
-        [true, false, 1, "LG KS360", 54, "240 x 320 pixels", "2 Megapixel", "Pink", "Slider", 359, 2.400000],
+        [true, false, 1, "LG KS360", 54, "240 x 320 pixels", "2 Megapixel", "Pink", "Slider", 359, 2.400000] ,
         [true, true, 2, "Sony Ericsson C510a Cyber-shot", 180, "320 x 240 pixels", "3.2 Megapixel", "Future black", "Candy bar", 11, 0.000000],
         [true, true, 3, "LG PRADA KE850", 155, "240 x 400 pixels", "2 Megapixel", "Black", "Candy bar", 113, 0.000000],
         [true, true, 4, "Nokia N900 Smartphone 32 GB", 499, "800 x 480 pixels", "5 Megapixel", "( the image of the product displayed may be of a different color )", "Slider", 320, 3.500000],
@@ -27,5 +50,5 @@ Ext.define('ADV.store.AnimatedDataViewStore', {
         [true, false, 19, "BlackBerry Curve 8900 BlackBerry", 349, "480 x 360 pixels", "3.2 Megapixel", "", "Candy bar", 21, 2.440000],
         [true, false, 20, "Samsung SGH U600 Ultra Edition 10.9", 135, "240 x 320 pixels", "3.2 Megapixel", "", "Slider", 169, 2.200000]
 
-    ]
+    ]//*/
 });
